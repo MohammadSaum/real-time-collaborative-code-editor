@@ -8,6 +8,14 @@ function App() {
 
     socket.on("connect", () => {
       console.log("Connected:", socket.id);
+
+      // join a room
+      const roomId = "room-1";
+      socket.emit("join-room", roomId);
+    });
+
+    socket.on("user-joined", (userId) => {
+      console.log("New user joined:", userId);
     });
 
     return () => {
@@ -17,7 +25,7 @@ function App() {
 
   return (
     <div>
-      <h1>Real-time engine starting ⚡</h1>
+      <h1>Room System Ready</h1>
     </div>
   );
 }
